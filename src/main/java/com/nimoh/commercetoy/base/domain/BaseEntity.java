@@ -1,4 +1,4 @@
-package com.nimoh.commercetoy.domain;
+package com.nimoh.commercetoy.base.domain;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;

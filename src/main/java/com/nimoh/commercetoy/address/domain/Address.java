@@ -1,6 +1,8 @@
-package com.nimoh.commercetoy.domain;
+package com.nimoh.commercetoy.address.domain;
 
+import com.nimoh.commercetoy.base.domain.BaseEntity;
 import com.nimoh.commercetoy.enums.AddressStatus;
+import com.nimoh.commercetoy.user.domain.Users;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

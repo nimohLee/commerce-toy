@@ -1,7 +1,9 @@
-package com.nimoh.commercetoy.domain;
+package com.nimoh.commercetoy.payment.domain;
 
+import com.nimoh.commercetoy.base.domain.BaseEntity;
 import com.nimoh.commercetoy.enums.PaymentMethod;
 import com.nimoh.commercetoy.enums.PaymentStatus;
+import com.nimoh.commercetoy.order.domain.Orders;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

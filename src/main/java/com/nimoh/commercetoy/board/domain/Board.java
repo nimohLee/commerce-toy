@@ -1,5 +1,6 @@
-package com.nimoh.commercetoy.domain;
+package com.nimoh.commercetoy.board.domain;
 
+import com.nimoh.commercetoy.base.domain.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,14 +10,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class Category extends BaseEntity {
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Board extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-
 }

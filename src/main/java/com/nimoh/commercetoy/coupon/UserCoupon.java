@@ -1,15 +1,19 @@
-package com.nimoh.commercetoy.domain;
+package com.nimoh.commercetoy.coupon;
 
-import com.nimoh.commercetoy.enums.OrderStatus;
+import com.nimoh.commercetoy.base.domain.BaseEntity;
+import com.nimoh.commercetoy.enums.UserCouponStatus;
+import com.nimoh.commercetoy.user.domain.Users;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Orders extends BaseEntity{
+public class UserCoupon extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,15 +24,11 @@ public class Orders extends BaseEntity{
     private Users users;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="product_id")
-    private Product product;
+    @JoinColumn(name="coupon_id")
+    private Coupon coupon;
 
     @Enumerated(EnumType.STRING)
-    private OrderStatus orderStatus;
+    private UserCouponStatus userCouponStatus;
 
-    private int totalPrice;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="address_id", unique = true)
-    private Address address;
+    private LocalDateTime expireDt;
 }

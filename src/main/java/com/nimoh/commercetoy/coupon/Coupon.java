@@ -1,5 +1,6 @@
-package com.nimoh.commercetoy.domain;
+package com.nimoh.commercetoy.coupon;
 
+import com.nimoh.commercetoy.base.domain.BaseEntity;
 import com.nimoh.commercetoy.enums.CouponStatus;
 import com.nimoh.commercetoy.enums.SaleMethod;
 import jakarta.persistence.*;
