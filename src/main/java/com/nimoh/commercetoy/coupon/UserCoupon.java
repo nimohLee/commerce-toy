@@ -1,8 +1,8 @@
 package com.nimoh.commercetoy.coupon;
 
 import com.nimoh.commercetoy.base.domain.BaseEntity;
-import com.nimoh.commercetoy.enums.UserCouponStatus;
-import com.nimoh.commercetoy.user.domain.Users;
+import com.nimoh.commercetoy.coupon.enums.UserCouponStatus;
+import com.nimoh.commercetoy.user.domain.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -20,8 +20,8 @@ public class UserCoupon extends BaseEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="users_id")
-    private Users users;
+    @JoinColumn(name="user_id")
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="coupon_id")

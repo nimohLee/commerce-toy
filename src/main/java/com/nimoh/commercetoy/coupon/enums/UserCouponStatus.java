@@ -1,12 +1,15 @@
-package com.nimoh.commercetoy.enums;
+package com.nimoh.commercetoy.coupon.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum CouponStatus {
-    ISSUABLE("issuable"),
+public enum UserCouponStatus {
+
+    USED("used"),
+    USABLE("usable"),
     EXPIRED("expired");
+
     private final String status;
 }

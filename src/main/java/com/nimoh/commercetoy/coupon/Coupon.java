@@ -1,8 +1,8 @@
 package com.nimoh.commercetoy.coupon;
 
 import com.nimoh.commercetoy.base.domain.BaseEntity;
-import com.nimoh.commercetoy.enums.CouponStatus;
-import com.nimoh.commercetoy.enums.SaleMethod;
+import com.nimoh.commercetoy.coupon.enums.CouponStatus;
+import com.nimoh.commercetoy.coupon.enums.SaleMethod;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

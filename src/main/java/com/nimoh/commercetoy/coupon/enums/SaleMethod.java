@@ -1,4 +1,4 @@
-package com.nimoh.commercetoy.enums;
+package com.nimoh.commercetoy.coupon.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,8 +1,8 @@
 package com.nimoh.commercetoy.address.domain;
 
 import com.nimoh.commercetoy.base.domain.BaseEntity;
-import com.nimoh.commercetoy.enums.AddressStatus;
-import com.nimoh.commercetoy.user.domain.Users;
+import com.nimoh.commercetoy.address.enums.AddressStatus;
+import com.nimoh.commercetoy.user.domain.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -18,8 +18,8 @@ public class Address extends BaseEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "users_id")
-    private Users users;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     private String city;
 

@@ -1,7 +1,7 @@
 package com.nimoh.commercetoy.cart.domain;
 
 import com.nimoh.commercetoy.base.domain.BaseEntity;
-import com.nimoh.commercetoy.user.domain.Users;
+import com.nimoh.commercetoy.user.domain.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -17,8 +17,8 @@ public class Cart extends BaseEntity {
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="users_id", unique = true)
-    private Users users;
+    @JoinColumn(name="user_id", unique = true)
+    private User user;
 
     private int totalPrice;
 
