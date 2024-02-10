@@ -20,7 +20,7 @@ public class Payment extends BaseEntity {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="order_id", unique = true)
-    private Orders order;
+    private Orders orders;
 
     @Enumerated(EnumType.STRING)
     private PaymentStatus paymentStatus;

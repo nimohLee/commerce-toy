@@ -8,10 +8,12 @@ import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@Setter
 public class Category extends BaseEntity {
 
     @Id
@@ -20,4 +22,7 @@ public class Category extends BaseEntity {
 
     private String name;
 
+    public Category(String name) {
+        this.name = name;
+    }
 }

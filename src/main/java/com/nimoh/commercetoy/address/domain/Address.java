@@ -5,8 +5,10 @@ import com.nimoh.commercetoy.address.enums.AddressStatus;
 import com.nimoh.commercetoy.user.domain.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
 
 @Entity
 @Getter
@@ -30,4 +32,23 @@ public class Address extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private AddressStatus addressStatus;
 
+
+    @Builder
+    public Address( String city, String street, String zipCode) {
+        this.city = city;
+        this.street = street;
+        this.zipCode = zipCode;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setAddressStatus(AddressStatus addressStatus) {
+        this.addressStatus = addressStatus;
+    }
+
+    public boolean isMainAddress() {
+        return addressStatus == AddressStatus.MAIN;
+    }
 }

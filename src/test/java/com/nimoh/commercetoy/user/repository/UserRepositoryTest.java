@@ -3,6 +3,9 @@ package com.nimoh.commercetoy.user.repository;
 import com.nimoh.commercetoy.user.domain.User;
 import com.nimoh.commercetoy.user.dto.UserUpdateRequestDto;
 import com.nimoh.commercetoy.user.enums.Gender;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import org.hibernate.exception.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -21,6 +24,8 @@ class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
 
+    @PersistenceContext
+    private EntityManager em;
     @Test
     void saveAndFindById() {
         User user = User.builder()
@@ -32,6 +37,32 @@ class UserRepositoryTest {
         User findUser = userRepository.findById(savedUser.getId()).get();
 
         assertThat(findUser.getName()).isEqualTo(user.getName());
+    }
+
+    @Test
+    void save_duplicate_exception() {
+        User user1 = User.builder()
+                .email("asdf@naver.com")
+                .loginId("test")
+                .password("password")
+                .build();
+
+        userRepository.save(user1);
+
+        User user2 = User.builder()
+                .email("asdf@naver.com")
+                .password("password")
+                .loginId("test123")
+                .build();
+
+        User user3 = User.builder()
+                .email("asdf2@naver.com")
+                .password("password")
+                .loginId("test")
+                .build();
+
+        assertThatThrownBy(() -> userRepository.save(user2)).isInstanceOf(ConstraintViolationException.class);
+        assertThatThrownBy(() -> userRepository.save(user3)).isInstanceOf(ConstraintViolationException.class);
     }
 
     @Test
@@ -62,6 +93,8 @@ class UserRepositoryTest {
                 .build();
 
         User savedUser = userRepository.save(user);
+        em.flush();
+        em.clear();
 
         UserUpdateRequestDto dto = new UserUpdateRequestDto();
         dto.setName("modi");

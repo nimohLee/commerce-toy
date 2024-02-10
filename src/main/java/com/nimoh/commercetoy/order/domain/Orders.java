@@ -6,12 +6,11 @@ import com.nimoh.commercetoy.product.domain.Product;
 import com.nimoh.commercetoy.order.enums.OrderStatus;
 import com.nimoh.commercetoy.user.domain.User;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Orders extends BaseEntity {
 
@@ -30,9 +29,20 @@ public class Orders extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
+    private int amount;
+
     private int totalPrice;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="address_id", unique = true)
     private Address address;
+
+    @Builder
+    public Orders(User user, Product product, int amount, int totalPrice, Address address) {
+        this.user = user;
+        this.product = product;
+        this.amount = amount;
+        this.totalPrice = totalPrice;
+        this.address = address;
+    }
 }
